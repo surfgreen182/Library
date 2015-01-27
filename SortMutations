@@ -1,0 +1,19 @@
+from sys import argv
+
+script, file = argv
+
+data = {}
+
+for line in open(file):
+	for mut in line.split():
+		index = int(mut[1:-1])
+		if index in data:
+			data[index].append(mut)
+		else:
+			data[index] = [mut]
+		
+amino = data.items()
+amino.sort()
+
+for n, mut in amino:	
+	print "%d: %s" % (n, " ".join(mut))
